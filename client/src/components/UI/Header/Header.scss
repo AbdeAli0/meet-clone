@@ -1,0 +1,36 @@
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    .logo{
+        display: flex;
+        align-items: center;
+        width: 124px;
+        img{
+            width: 100%;
+        }
+        .help-text{
+            font-size: 25px;
+            padding-left: 4px;
+            color: #5f6368;
+            font-family: 'Comic Neue', cursive;
+            src: url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap');
+        }
+        .help-text2{
+            font-size: 20px;
+            padding-left: 4px;
+            color: #878c92;
+        }
+    }
+    .action-btn{
+        display: flex;
+        align-items: center;
+        .icon-block{
+            font-size: 20px;
+            padding: 10px;
+            color: #5f6368;
+        }
+    }
+}
