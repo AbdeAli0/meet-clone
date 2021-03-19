@@ -15,7 +15,12 @@ app.use([
   Routes,
 ]);
 
-const io = (module.exports.io = require("socket.io")(server));
+const io = (module.exports.io = require("socket.io")(server, {
+    cors: {
+      origin: "http://localhost:3000",
+      credentials: true
+    }
+  }));
 const socketManager = require("./app/socketManager");
 io.on("connection", socketManager);
 
@@ -32,19 +37,3 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
-
-// ** MIDDLEWARE ** //
-const whitelist = ['http://localhost:3000'​, 'http://localhost:4000'​, 'https://shrouded-journey-38552.heroku...​]
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
-    } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions))
